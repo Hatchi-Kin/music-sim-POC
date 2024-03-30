@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"/>
+    <title>Musics Embeddings</title>
+  </head>
+  <body>
+
+    <header class="container" style="display: flex; flex-direction: column; align-items: center;">
+      <h1>Musics Embeddings</h1>
+      <nav aria-label="breadcrumb" style="--pico-nav-breadcrumb-divider: '/';">
+        <ul>
+          <li><a href="{{ url_for('home') }}">Home</a></li>
+          <li><a href="{{ url_for('list_artists') }}">Browse Music</a></li>
+          <li><a href="{{ url_for('login') }}">Sign In</a></li>
+          <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+           {% block content %}
+      <!-- ##################
+           ##################
+           ################## -->
+           {% endblock %}
+    </main>
+
+    <footer class="container" style="display: flex; flex-direction: column; align-items: center;">
+      <p>2024 - Musics Embeddings</p>
+    </footer>
+  </body>
+</html>

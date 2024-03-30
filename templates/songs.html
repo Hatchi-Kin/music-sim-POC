@@ -1,0 +1,41 @@
+{% extends "base.html" %} {% block content %}
+
+<header class="container">
+  <nav aria-label="breadcrumb" style="--pico-nav-breadcrumb-divider: '/'">
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/artists">By Artists</a></li>
+      <li>
+        <a href="{{ url_for('list_artist_albums', artist_name=artist) }}"
+          >{{ artist_name }}</a
+        >
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<div class="container">
+  <h1 style="margin-bottom: 60px">
+    Similar songs to:
+    <span style="color: rgb(84, 139, 201)">{{ file_name }}</span> by
+    <span style="color: rgb(84, 139, 201)">{{ band_name }}</span>
+  </h1>
+
+  {% for song_group in songs|batch(3) %}
+  <div class="grid">
+    {% for song in song_group %}
+    <article>
+      <p>
+        <a href="{{ url_for('similar_songs', full_path=song.path) }}"
+          >{{ song.title }}</a
+        >
+      </p>
+      <p>artist: {{ song.artist }}</p>
+      <p>album: {{ song.album }}</p>
+    </article>
+    {% endfor %}
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock %}

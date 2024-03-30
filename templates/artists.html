@@ -1,0 +1,29 @@
+{% extends "base.html" %} 
+
+{% block content %}
+
+<header class="container">
+  <nav aria-label="breadcrumb" style="--pico-nav-breadcrumb-divider: '/';">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/artists">By Artists</a></li>
+      </ul>
+  </nav>
+</header>
+
+<div class="container">
+  <h1 style="margin-bottom: 60px">Artists</h1>
+
+  {% for artist_group in artists|batch(4) %}
+  <div class="grid">
+    {% for artist in artist_group %}
+    <article>
+      <a href="{{ url_for('list_artist_albums', artist_name=artist) }}"></span>{{ artist }}</a>
+    </article>
+    
+    {% endfor %}
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock %}
