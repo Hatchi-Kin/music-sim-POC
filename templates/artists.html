@@ -1,13 +1,11 @@
-{% extends "base.html" %} 
-
-{% block content %}
+{% extends "base.html" %} {% block content %}
 
 <header class="container">
-  <nav aria-label="breadcrumb" style="--pico-nav-breadcrumb-divider: '/';">
-      <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/artists">By Artists</a></li>
-      </ul>
+  <nav aria-label="breadcrumb" style="--pico-nav-breadcrumb-divider: '/'">
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/artists">By Artists</a></li>
+    </ul>
   </nav>
 </header>
 
@@ -19,8 +17,20 @@
     {% for artist in artist_group %}
     <article>
       <form action="{{ url_for('list_artist_albums') }}" method="post">
-        <input type="hidden" name="artist_folder" value="{{ artist }}">
-        <button type="submit" style="background: none!important; border: none; padding: 0!important; color: #069; text-decoration: underline; cursor: pointer;">{{ artist[8:] }}</button>
+        <input type="hidden" name="artist_folder" value="{{ artist }}" />
+        <button
+          type="submit"
+          style="
+            background: none !important;
+            border: none;
+            padding: 0 !important;
+            color: rgb(33, 138, 190);
+            text-decoration: underline;
+            cursor: pointer;
+          "
+        >
+          {{ artist[8:] }}
+        </button>
       </form>
     </article>
     {% endfor %}

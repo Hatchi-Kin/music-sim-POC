@@ -96,7 +96,7 @@ def list_artist_albums():
         albums = response.json()
     except RequestException as e:
         return redirect(url_for("list_artists"))
-    return render_template("albums.html", albums=albums, artist_folder=artist_folder)
+    return render_template("albums.html", albums=albums, artist_folder=artist_folder, artist_name=artist_folder.split("/")[-1])
 
 
 @app.route("/artist/<string:artist_name>/album/<string:album_name>")
