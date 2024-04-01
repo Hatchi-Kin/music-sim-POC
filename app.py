@@ -84,18 +84,18 @@ def list_artists():
     return render_template("artists.html", artists=list_of_artists)
 
 
-@app.route("/artist/<string:artist_name>/albums")
+@app.route("/artist/<string:artist_folder>/albums")
 @login_required
-def list_artist_albums(artist_name):
+def list_artist_albums(artist_folder):
     url = f"{BASE_URL}/music_library/albums"
     headers = {"Authorization": f"Bearer {current_user.id}"}
-    data = {"artist_folder": f"{artist_name}"}
+    data = {"artist_folder": f"{artist_folder}"}
     try:
         response = requests.post(url, headers=headers, json=data)
         albums = response.json()
     except RequestException as e:
         return redirect(url_for("list_artists"))
-    return render_template("albums.html", albums=albums, artist_name=artist_name)
+    return render_template("albums.html", albums=albums, artist_name=artist_folder)
 
 
 @app.route("/artist/<string:artist_name>/album/<string:album_name>")
