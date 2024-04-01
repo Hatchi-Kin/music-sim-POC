@@ -20,7 +20,7 @@
     <article>
       <form action="{{ url_for('list_artist_albums') }}" method="post">
         <input type="hidden" name="artist_folder" value="{{ artist }}">
-        <button type="submit">{{ artist[8:] }}</button>
+        <button type="submit" style="background: none!important; border: none; padding: 0!important; color: #069; text-decoration: underline; cursor: pointer;">{{ artist[8:] }}</button>
       </form>
     </article>
     {% endfor %}
