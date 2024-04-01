@@ -18,7 +18,7 @@
   <div class="grid">
     {% for artist in artist_group %}
     <article>
-      <a href="{{ url_for('list_artist_albums', artist_name=artist) }}"></span>{{ artist }}</a>
+      <a href="{{ url_for('list_artist_albums', artist_name=artist) }}"></span>{{ artist[8:] }}</a>
     </article>
     
     {% endfor %}
