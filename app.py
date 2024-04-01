@@ -84,9 +84,10 @@ def list_artists():
     return render_template("artists.html", artists=list_of_artists)
 
 
-@app.route("/artist/<string:artist_folder>/albums")
+@app.route("/artist/albums", methods=['POST'])
 @login_required
-def list_artist_albums(artist_folder):
+def list_artist_albums():
+    artist_folder = request.form.get('artist_folder')
     url = f"{BASE_URL}/music_library/albums"
     headers = {"Authorization": f"Bearer {current_user.id}"}
     data = {"artist_folder": f"{artist_folder}"}
