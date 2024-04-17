@@ -9,7 +9,7 @@ from requests.exceptions import RequestException
 from dotenv import load_dotenv
 
 load_dotenv()
-BASE_URL = os.getenv("BASE_URL")
+BASE_URL = os.getenv("PI_URL")
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = os.getenv("SECRET_KEY")
@@ -95,7 +95,7 @@ def list_artist_albums():
         response = requests.post(url, headers=headers, json=data)
         albums = response.json()
     except RequestException as e:
-        return redirect(url_for("list_artists"))
+        return redirect(url_for("home"))
     return render_template("albums.html", albums=albums, artist_folder=artist_folder, artist_name=artist_folder.split("/")[-1])
 
 
@@ -110,7 +110,7 @@ def album_tracklist(artist_name, album_name):
         tracklist = response.json()
         tracklist.sort(key=lambda x: x['tracknumber'])  # Sort by tracknumber
     except RequestException as e:
-        return redirect(url_for("list_artists"))
+        return redirect(url_for("home"))
     return render_template("tracklist.html", tracklist=tracklist, artist_name=artist_name, album_name=album_name)
 
 
@@ -125,7 +125,7 @@ def similar_songs(full_path):
         response.raise_for_status()
         songs = response.json().get("entities", [])
     except RequestException as e:
-        return redirect(url_for("list_artists"))
+        return redirect(url_for("home"))
     band_name = full_path.split("/")[1]
     file_name = full_path.split("/")[-1].split(".")[0]
     return render_template("songs.html", songs=songs, band_name=band_name, file_name=file_name)

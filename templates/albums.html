@@ -18,7 +18,7 @@
 {% for album_group in albums|batch(2) %}
   <div class="grid">
     {% for album in album_group %}
-      <article><a href="{{ url_for('album_tracklist', artist_name=artist_name, album_name=album) }}">{{ album }}</a></article>
+      <article><a href="{{ url_for('album_tracklist', artist_name=artist_name, album_folder=album) }}">{{ album }}</a></article>
     {% endfor %}
   </div>
 {% endfor %}
