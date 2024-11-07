@@ -9,7 +9,7 @@ from requests.exceptions import RequestException
 from dotenv import load_dotenv
 
 load_dotenv()
-BASE_URL = os.getenv("PI_URL")
+BASE_URL = os.getenv("API_URL")
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = os.getenv("SECRET_KEY")
