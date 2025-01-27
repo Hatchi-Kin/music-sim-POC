@@ -38,7 +38,7 @@ Ce dépôt est une preuve de concept pour une application web qui utilise Flask 
 
 ## Déploiement
 
-L'application est déployée dans un conteneur grâce à un service de conteneurisation (Container as a Service) fourni par Back4app. Vous pouvez accéder à l'application déployée à l'adresse suivante : [https://musicsim-2agicsd1.b4a.run/](https://musicsim-2agicsd1.b4a.run/).
+L'application était déployée dans un conteneur grâce à un service de conteneurisation (Container as a Service) fourni par Back4app.
 
 ## Prochaines Étapes
 
